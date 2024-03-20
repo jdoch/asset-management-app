@@ -2,6 +2,8 @@ package com.example.springcrudapp.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -17,10 +19,10 @@ public class Company {
 
     /*@ManyToMany(mappedBy = "companies")
     @JsonIgnoreProperties({"companies", "address"})
-    private Set<Customer> customers = new HashSet<>();
+    private Set<Customer> customers = new HashSet<>();*/
 
     @OneToMany(mappedBy = "company")
-    private List<Asset> assets = new ArrayList<>();*/
+    private List<Asset> assets = new ArrayList<>();
 
     public UUID getId() {
         return id;
@@ -52,7 +54,7 @@ public class Company {
 
     public void setCustomers(Set<Customer> customers) {
         this.customers = customers;
-    }
+    }*/
 
     public List<Asset> getAssets() {
         return assets;
@@ -60,5 +62,5 @@ public class Company {
 
     public void setAssets(List<Asset> assets) {
         this.assets = assets;
-    }*/
+    }
 }

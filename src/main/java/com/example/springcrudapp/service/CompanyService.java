@@ -37,14 +37,9 @@ public class CompanyService {
     }
     public List<Company> findAllCriteriaQuery() {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        /*CriteriaQuery<Company> criteriaQuery = criteriaBuilder.createQuery(Company.class);
+        CriteriaQuery<Company> criteriaQuery = criteriaBuilder.createQuery(Company.class);
 
         Root<Company> root = criteriaQuery.from(Company.class);
-        criteriaQuery.select(root);*/
-
-        CriteriaQuery<Address> criteriaQuery = criteriaBuilder.createQuery(Address.class);
-        Root<Address> root = criteriaQuery.from(Address.class);
-
         criteriaQuery.select(root);
 
         //Fetch<Company, Asset> assetJoin = root.fetch(Company_.assets, JoinType.LEFT);
@@ -52,14 +47,8 @@ public class CompanyService {
         /*Fetch<Company, Customer> customerJoin = root.fetch(Company_.customers, JoinType.LEFT);
         Fetch<Customer, Address> customerAddressJoin = customerJoin.fetch(Customer_.address, JoinType.LEFT);*/
 
-        TypedQuery<Address> query = entityManager.createQuery(criteriaQuery);
-        /*List<Address> list = query.getResultList();
-        list.forEach(e -> {
-            Company company = e.getCompany();
-            if (company != null) {
-                System.out.println(company.getName());
-            }
-        });*/
+        TypedQuery<Company> query = entityManager.createQuery(criteriaQuery);
+        List<Company> list = query.getResultList();
         return null;
     }
 
