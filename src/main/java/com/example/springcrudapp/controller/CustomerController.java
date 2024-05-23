@@ -34,7 +34,7 @@ public class CustomerController {
     }
 
     @DeleteMapping("/delete")
-    public void add(@RequestParam String uuid) {
-        customerService.delete(UUID.fromString(uuid));
+    public void add(@RequestParam String id) {
+        customerService.delete(UUID.fromString(id));
     }
 }
