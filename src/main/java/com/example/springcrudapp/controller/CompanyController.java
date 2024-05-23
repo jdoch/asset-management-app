@@ -2,20 +2,16 @@ package com.example.springcrudapp.controller;
 
 import com.example.springcrudapp.model.Company;
 import com.example.springcrudapp.service.CompanyService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/company")
+@AllArgsConstructor
 public class CompanyController {
 
     private final CompanyService companyService;
-
-    public CompanyController(CompanyService companyService) {
-        this.companyService = companyService;
-    }
 
     @GetMapping("/getAll")
     public Iterable<Company> getAll() {
