@@ -17,7 +17,8 @@ public class Customer implements Serializable {
     private String name;
     private String surname;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     private Address address;
 
     @ManyToMany
