@@ -1,4 +1,4 @@
-package com.example.springcrudapp.dto;
+package com.example.springcrudapp.model.DTO;
 
 import com.example.springcrudapp.model.Address;
 

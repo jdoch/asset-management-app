@@ -1,6 +1,6 @@
 package com.example.springcrudapp.controller;
 
-import com.example.springcrudapp.dto.CustomerDTO;
+import com.example.springcrudapp.model.DTO.CustomerDTO;
 import com.example.springcrudapp.model.Customer;
 import com.example.springcrudapp.service.CustomerService;
 import lombok.AllArgsConstructor;

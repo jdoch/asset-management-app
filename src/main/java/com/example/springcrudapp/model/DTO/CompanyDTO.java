@@ -13,7 +13,7 @@ import java.util.Set;
 
 @Getter
 @Setter
-public class CompanyDto {
+public class CompanyDTO {
     private String name;
     private Address address;
     private Set<Customer> customers = new HashSet<>();
