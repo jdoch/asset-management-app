@@ -20,7 +20,7 @@ public class Customer {
     private String name;
     private String surname;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Address address;
 
     @ManyToMany
