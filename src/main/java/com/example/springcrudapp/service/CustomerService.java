@@ -6,21 +6,16 @@ import com.example.springcrudapp.model.Address;
 import com.example.springcrudapp.model.Customer;
 import com.example.springcrudapp.repository.AddressRepository;
 import com.example.springcrudapp.repository.CustomerRepository;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 @Service
+@AllArgsConstructor
 public class CustomerService {
     private final CustomerRepository customerRepository;
     private final AddressRepository addressRepository;
-
-    public CustomerService(CustomerRepository customerRepository, AddressRepository addressRepository) {
-        this.customerRepository = customerRepository;
-        this.addressRepository = addressRepository;
-    }
 
     public Iterable<Customer> findAll() {
         return customerRepository.findAll();

@@ -3,6 +3,7 @@ package com.example.springcrudapp.controller;
 import com.example.springcrudapp.dto.CustomerDTO;
 import com.example.springcrudapp.model.Customer;
 import com.example.springcrudapp.service.CustomerService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,13 +11,10 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/customers")
+@AllArgsConstructor
 public class CustomerController {
 
     private final CustomerService customerService;
-
-    public CustomerController(CustomerService customerService) {
-        this.customerService = customerService;
-    }
 
     @GetMapping("/getAll")
     public Iterable<Customer> getAll() {
