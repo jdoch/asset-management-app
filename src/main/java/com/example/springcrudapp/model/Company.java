@@ -17,7 +17,7 @@ public class Company {
     private UUID id;
     private String name;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Address address;
 
     @ManyToMany(mappedBy = "companies")
@@ -33,7 +33,5 @@ public class Company {
     public Company(CompanyDTO companyDto) {
         name = companyDto.getName();
         address = companyDto.getAddress();
-        customers = companyDto.getCustomers();
-        assets = companyDto.getAssets();
     }
 }
