@@ -6,4 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.UUID;
 
 public interface AssetRepository extends CrudRepository<Asset, UUID> {
+    Iterable<Asset> findAllByCompanyId(UUID companyId);
 }

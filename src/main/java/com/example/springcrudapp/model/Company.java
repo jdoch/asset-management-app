@@ -1,6 +1,6 @@
 package com.example.springcrudapp.model;
 
-import com.example.springcrudapp.model.DTO.CompanyDto;
+import com.example.springcrudapp.model.DTO.CompanyDTO;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -17,7 +17,7 @@ public class Company {
     private UUID id;
     private String name;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Address address;
 
     @ManyToMany(mappedBy = "companies")
@@ -30,10 +30,13 @@ public class Company {
     public Company() {
     }
 
-    public Company(CompanyDto companyDto) {
+    public Company(CompanyDTO companyDto) {
         name = companyDto.getName();
         address = companyDto.getAddress();
-        customers = companyDto.getCustomers();
-        assets = companyDto.getAssets();
+    }
+
+    public void addAsset(Asset asset) {
+        assets.add(asset);
+        asset.setCompany(this);
     }
 }
