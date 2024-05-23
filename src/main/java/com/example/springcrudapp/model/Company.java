@@ -1,5 +1,6 @@
 package com.example.springcrudapp.model;
 
+import com.example.springcrudapp.model.DTO.CompanyDto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -25,4 +26,14 @@ public class Company {
 
     @OneToMany(mappedBy = "company", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Asset> assets = new ArrayList<>();
+
+    public Company() {
+    }
+
+    public Company(CompanyDto companyDto) {
+        name = companyDto.getName();
+        address = companyDto.getAddress();
+        customers = companyDto.getCustomers();
+        assets = companyDto.getAssets();
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.springcrudapp.controller;
 
 import com.example.springcrudapp.model.Company;
+import com.example.springcrudapp.model.DTO.CompanyDto;
 import com.example.springcrudapp.service.CompanyService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,7 @@ public class CompanyController {
 
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public Company add(@RequestBody Company company) {
-        return companyService.save(company);
+    public Company add(@RequestBody CompanyDto companyDto) {
+        return companyService.save(companyDto);
     }
 }
