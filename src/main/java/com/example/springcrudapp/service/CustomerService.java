@@ -8,6 +8,7 @@ import com.example.springcrudapp.repository.AddressRepository;
 import com.example.springcrudapp.repository.CustomerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
@@ -15,36 +16,44 @@ import java.util.UUID;
 @AllArgsConstructor
 public class CustomerService {
     private final CustomerRepository customerRepository;
-    private final AddressRepository addressRepository;
 
     public Iterable<Customer> findAll() {
         return customerRepository.findAll();
     }
 
     public Customer save(CustomerDTO customerDTO) {
-        Customer customer = new Customer();
-        customer.setName(customerDTO.getName());
-        customer.setSurname(customerDTO.getSurname());
-
-        Address address = customerDTO.getAddress();
-        if (address != null) {
-            customer.setAddress(address);
-            addressRepository.save(address);
-        }
-        return customerRepository.save(customer);
+        return customerRepository.save(new Customer(customerDTO));
     }
 
-    public Customer update(UUID id, Customer updatedCustomer) {
+    @Transactional
+    public Customer update(UUID id, CustomerDTO updatedCustomer) {
         Customer customer = customerRepository.findById(id).orElseThrow(CustomerNotFound::new);
         customer.setName(updatedCustomer.getName());
         customer.setSurname(updatedCustomer.getSurname());
-        return customerRepository.save(customer);
+        updateCustomerAddress(customer, updatedCustomer.getAddress());
+        return customer;
     }
 
+    @Transactional
     public void delete(UUID id) {
         if (customerRepository.findById(id).isEmpty()) {
             throw new CustomerNotFound();
         }
         customerRepository.deleteById(id);
+    }
+
+    private void updateCustomerAddress(Customer customer, Address updatedAddress) {
+        Address address = customer.getAddress();
+        if (address == null) {
+            address = new Address();
+            customer.setAddress(address);
+        }
+
+        if (updatedAddress != null) {
+            address.setStreet(updatedAddress.getStreet());
+            address.setPostalCode(updatedAddress.getPostalCode());
+            address.setBuildingNumber(updatedAddress.getBuildingNumber());
+            address.setHouseNumber(updatedAddress.getHouseNumber());
+        }
     }
 }
