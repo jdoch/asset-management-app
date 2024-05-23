@@ -1,10 +1,9 @@
 package com.example.springcrudapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 public class Company {
@@ -17,11 +16,11 @@ public class Company {
     @OneToOne(fetch = FetchType.LAZY)
     private Address address;
 
-    /*@ManyToMany(mappedBy = "companies")
+    @ManyToMany(mappedBy = "companies")
     @JsonIgnoreProperties({"companies", "address"})
-    private Set<Customer> customers = new HashSet<>();*/
+    private Set<Customer> customers = new HashSet<>();
 
-    @OneToMany(mappedBy = "company")
+    @OneToMany(mappedBy = "company", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Asset> assets = new ArrayList<>();
 
     public UUID getId() {
@@ -48,13 +47,13 @@ public class Company {
         this.address = address;
     }
 
-    /*public Set<Customer> getCustomers() {
+    public Set<Customer> getCustomers() {
         return customers;
     }
 
     public void setCustomers(Set<Customer> customers) {
         this.customers = customers;
-    }*/
+    }
 
     public List<Asset> getAssets() {
         return assets;
