@@ -34,4 +34,9 @@ public class Company {
         name = companyDto.getName();
         address = companyDto.getAddress();
     }
+
+    public void addAsset(Asset asset) {
+        assets.add(asset);
+        asset.setCompany(this);
+    }
 }

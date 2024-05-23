@@ -1,5 +1,6 @@
 package com.example.springcrudapp.model;
 
+import com.example.springcrudapp.model.DTO.AssetDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -20,4 +21,12 @@ public class Asset {
     @ManyToOne
     @JsonIgnore
     private Company company;
+
+    public Asset() {
+    }
+
+    public Asset(AssetDTO assetDTO) {
+        name = assetDTO.getName();
+        value = assetDTO.getValue();
+    }
 }
