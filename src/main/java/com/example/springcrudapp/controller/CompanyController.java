@@ -18,8 +18,8 @@ public class CompanyController {
     }
 
     @GetMapping("/getAll")
-    public List<Company> getAll() {
-        return companyService.findAllCriteriaQuery();
+    public Iterable<Company> getAll() {
+        return companyService.findAll();
     }
 
     @PostMapping("/add")
