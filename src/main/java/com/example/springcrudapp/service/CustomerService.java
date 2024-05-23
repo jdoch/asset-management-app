@@ -8,8 +8,6 @@ import com.example.springcrudapp.repository.AddressRepository;
 import com.example.springcrudapp.repository.CustomerRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.TypedQuery;
-import jakarta.persistence.criteria.*;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -19,9 +17,6 @@ public class CustomerService {
     private final CustomerRepository customerRepository;
     private final AddressRepository addressRepository;
 
-    @PersistenceContext
-    private EntityManager entityManager;
-
     public CustomerService(CustomerRepository customerRepository, AddressRepository addressRepository) {
         this.customerRepository = customerRepository;
         this.addressRepository = addressRepository;
@@ -29,20 +24,6 @@ public class CustomerService {
 
     public Iterable<Customer> findAll() {
         return customerRepository.findAll();
-    }
-
-    public Object[] getMinMaxBuildingNumber() {
-        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Object[]> cq = cb.createQuery(Object[].class);
-        Root<Customer> customer = cq.from(Customer.class);
-        var address = customer.join("address", JoinType.LEFT);
-        cq.multiselect(
-                cb.max(address.get("buildingNumber").as(Long.class)),
-                cb.min(address.get("buildingNumber").as(Long.class)));
-        //Predicate namePredicate = cb.equal(customer.get("name"), "Jan");
-        //cq.where(namePredicate);
-        TypedQuery<Object[]> query = entityManager.createQuery(cq);
-        return query.getSingleResult();
     }
 
     public Customer save(CustomerDTO customerDTO) {
