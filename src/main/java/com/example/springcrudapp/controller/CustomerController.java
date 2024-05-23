@@ -23,11 +23,6 @@ public class CustomerController {
         return customerService.findAll();
     }
 
-    @GetMapping("/getAllWhere")
-    public Object[] getAllWhere() {
-        return customerService.getMinMaxBuildingNumber();
-    }
-
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public Customer add(@RequestBody CustomerDTO customerDTO) {
