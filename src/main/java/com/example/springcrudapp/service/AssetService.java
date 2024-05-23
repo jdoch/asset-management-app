@@ -5,6 +5,8 @@ import com.example.springcrudapp.repository.AssetRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @AllArgsConstructor
 public class AssetService {
@@ -13,5 +15,9 @@ public class AssetService {
 
     public Iterable<Asset> getAll() {
         return assetRepository.findAll();
+    }
+
+    public Iterable<Asset> getAllById(UUID companyId) {
+        return assetRepository.findAllByCompanyId(companyId);
     }
 }

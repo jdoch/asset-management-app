@@ -5,6 +5,8 @@ import com.example.springcrudapp.service.AssetService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/asset")
 @AllArgsConstructor
@@ -13,5 +15,10 @@ public class AssetController {
     @GetMapping("/getAll")
     public Iterable<Asset> getAll() {
         return assetService.getAll();
+    }
+
+    @GetMapping("/getAllForCompany")
+    public Iterable<Asset> getAll(@RequestParam UUID companyId) {
+        return assetService.getAllById(companyId);
     }
 }
