@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("/customer")
 @AllArgsConstructor
 public class CustomerController {
 
@@ -29,8 +29,8 @@ public class CustomerController {
 
     @PutMapping("/update")
     public Customer update(@RequestParam UUID id,
-                           @RequestBody Customer customer) {
-        return customerService.update(id, customer);
+                           @RequestBody CustomerDTO customerDTO) {
+        return customerService.update(id, customerDTO);
     }
 
     @DeleteMapping("/delete")
