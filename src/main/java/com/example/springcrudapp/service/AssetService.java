@@ -24,7 +24,7 @@ public class AssetService {
         return assetRepository.findAll();
     }
 
-    public Iterable<Asset> getAllById(UUID companyId) {
+    public Iterable<Asset> getAllByCompanyId(UUID companyId) {
         return assetRepository.findAllByCompanyId(companyId);
     }
 

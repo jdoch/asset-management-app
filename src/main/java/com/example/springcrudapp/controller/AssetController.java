@@ -20,7 +20,7 @@ public class AssetController {
 
     @GetMapping("/getAllForCompany")
     public Iterable<Asset> getAll(@RequestParam UUID companyId) {
-        return assetService.getAllById(companyId);
+        return assetService.getAllByCompanyId(companyId);
     }
 
     @PostMapping("/addToCompany")
