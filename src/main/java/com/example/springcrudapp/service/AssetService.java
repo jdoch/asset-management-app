@@ -38,7 +38,7 @@ public class AssetService {
 
     @Transactional
     public void remove(UUID id) {
-        if (assetRepository.findById(id).isEmpty()) {
+        if (!assetRepository.existsById(id)) {
             throw new AssetNotFound();
         }
         assetRepository.deleteById(id);

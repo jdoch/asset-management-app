@@ -36,7 +36,7 @@ public class CustomerService {
 
     @Transactional
     public void delete(UUID id) {
-        if (customerRepository.findById(id).isEmpty()) {
+        if (customerRepository.existsById(id)) {
             throw new CustomerNotFound();
         }
         customerRepository.deleteById(id);
