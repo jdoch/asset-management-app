@@ -22,4 +22,8 @@ public class Address {
     @JsonIgnore
     @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
     private Company company;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
+    private Customer customer;
 }
