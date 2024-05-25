@@ -8,5 +8,5 @@ import lombok.Setter;
 @Setter
 public class CompanyDTO {
     private String name;
-    private Address address;
+    private AddressDTO address;
 }

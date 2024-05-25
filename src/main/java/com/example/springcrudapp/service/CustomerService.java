@@ -1,5 +1,6 @@
 package com.example.springcrudapp.service;
 
+import com.example.springcrudapp.model.DTO.AddressDTO;
 import com.example.springcrudapp.model.DTO.CustomerDTO;
 import com.example.springcrudapp.exception.CustomerNotFound;
 import com.example.springcrudapp.model.Address;
@@ -42,7 +43,7 @@ public class CustomerService {
         customerRepository.deleteById(id);
     }
 
-    private void updateCustomerAddress(Customer customer, Address updatedAddress) {
+    private void updateCustomerAddress(Customer customer, AddressDTO updatedAddress) {
         Address address = customer.getAddress();
         if (address == null) {
             address = new Address();

@@ -1,6 +1,5 @@
 package com.example.springcrudapp.model.DTO;
 
-import com.example.springcrudapp.model.Address;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,5 +8,5 @@ import lombok.Setter;
 public class CustomerDTO {
     private String name;
     private String surname;
-    private Address address;
+    private AddressDTO address;
 }

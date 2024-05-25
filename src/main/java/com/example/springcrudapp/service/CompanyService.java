@@ -2,6 +2,7 @@ package com.example.springcrudapp.service;
 
 import com.example.springcrudapp.exception.CompanyNotFound;
 import com.example.springcrudapp.model.*;
+import com.example.springcrudapp.model.DTO.AddressDTO;
 import com.example.springcrudapp.model.DTO.CompanyDTO;
 import com.example.springcrudapp.repository.CompanyRepository;
 import lombok.AllArgsConstructor;
@@ -32,7 +33,7 @@ public class CompanyService {
         return company;
     }
 
-    private void updateCompanyAddress(Company company, Address updatedAddress) {
+    private void updateCompanyAddress(Company company, AddressDTO updatedAddress) {
         Address address = company.getAddress();
         if (address == null) {
             address = new Address();
