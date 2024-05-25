@@ -18,7 +18,7 @@ public class Asset {
     private String name;
     private double value;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     private Company company;
 
