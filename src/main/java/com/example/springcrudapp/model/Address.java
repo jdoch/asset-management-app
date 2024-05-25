@@ -1,5 +1,6 @@
 package com.example.springcrudapp.model;
 
+import com.example.springcrudapp.model.DTO.AddressDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -26,4 +27,14 @@ public class Address {
     @JsonIgnore
     @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
     private Customer customer;
+
+    public Address() {
+    }
+
+    public Address(AddressDTO addressDTO) {
+        street = addressDTO.getStreet();
+        postalCode = addressDTO.getPostalCode();
+        buildingNumber = addressDTO.getBuildingNumber();;
+        houseNumber = addressDTO.getHouseNumber();;
+    }
 }

@@ -33,6 +33,6 @@ public class Customer {
     public Customer(CustomerDTO customerDTO) {
         name = customerDTO.getName();
         surname = customerDTO.getSurname();
-        address = customerDTO.getAddress();;
+        address = new Address(customerDTO.getAddress());
     }
 }

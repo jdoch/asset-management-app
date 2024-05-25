@@ -32,7 +32,7 @@ public class Company {
 
     public Company(CompanyDTO companyDto) {
         name = companyDto.getName();
-        address = companyDto.getAddress();
+        address = new Address(companyDto.getAddress());
     }
 
     public void addAsset(Asset asset) {
