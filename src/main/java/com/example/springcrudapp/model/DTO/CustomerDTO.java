@@ -1,5 +1,6 @@
 package com.example.springcrudapp.model.DTO;
 
+import com.example.springcrudapp.model.Company;
 import lombok.Getter;
 import lombok.Setter;
 
