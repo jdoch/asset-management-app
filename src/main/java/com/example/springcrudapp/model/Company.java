@@ -18,6 +18,7 @@ public class Company {
     private String name;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @JsonIgnoreProperties({"hibernateLazyInitializer"})
     private Address address;
 
     @ManyToMany(mappedBy = "companies")

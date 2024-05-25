@@ -21,6 +21,7 @@ public class Customer {
     private String surname;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @JsonIgnoreProperties({"hibernateLazyInitializer"})
     private Address address;
 
     @ManyToMany
