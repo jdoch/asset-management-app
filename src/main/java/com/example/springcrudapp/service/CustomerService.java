@@ -5,7 +5,6 @@ import com.example.springcrudapp.model.DTO.CustomerDTO;
 import com.example.springcrudapp.exception.CustomerNotFound;
 import com.example.springcrudapp.model.Address;
 import com.example.springcrudapp.model.Customer;
-import com.example.springcrudapp.repository.AddressRepository;
 import com.example.springcrudapp.repository.CustomerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
