@@ -2,11 +2,13 @@ package com.example.springcrudapp.controller;
 
 import com.example.springcrudapp.model.DTO.CustomerDTO;
 import com.example.springcrudapp.model.Customer;
+import com.example.springcrudapp.model.DTO.CustomerListEntryDTO;
 import com.example.springcrudapp.service.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -17,8 +19,13 @@ public class CustomerController {
     private final CustomerService customerService;
 
     @GetMapping("/getAll")
-    public Iterable<Customer> getAll() {
+    public List<CustomerListEntryDTO> getAll() {
         return customerService.findAll();
+    }
+
+    @GetMapping("/getDetails")
+    public Customer getDetails(@RequestParam UUID id) {
+        return customerService.findById(id);
     }
 
     @PostMapping("/add")
