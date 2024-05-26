@@ -2,11 +2,13 @@ package com.example.springcrudapp.controller;
 
 import com.example.springcrudapp.model.Company;
 import com.example.springcrudapp.model.DTO.CompanyDTO;
+import com.example.springcrudapp.model.DTO.CompanyListEntryDTO;
 import com.example.springcrudapp.service.CompanyService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -17,7 +19,7 @@ public class CompanyController {
     private final CompanyService companyService;
 
     @GetMapping("/getAll")
-    public Iterable<Company> getAll() {
+    public List<CompanyListEntryDTO> getAll() {
         return companyService.findAll();
     }
 

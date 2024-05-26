@@ -4,12 +4,16 @@ import com.example.springcrudapp.exception.CompanyNotFound;
 import com.example.springcrudapp.model.*;
 import com.example.springcrudapp.model.DTO.AddressDTO;
 import com.example.springcrudapp.model.DTO.CompanyDTO;
+import com.example.springcrudapp.model.DTO.CompanyListEntryDTO;
 import com.example.springcrudapp.repository.CompanyRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 
 @Service
@@ -17,8 +21,10 @@ import java.util.UUID;
 public class CompanyService {
     private final CompanyRepository companyRepository;
 
-    public Iterable<Company> findAll() {
-        return companyRepository.findAll();
+    public List<CompanyListEntryDTO> findAll() {
+        return StreamSupport.stream(companyRepository.findAll().spliterator(), false)
+                .map(CompanyListEntryDTO::new)
+                .collect(Collectors.toList());
     }
 
     public Company save(CompanyDTO companyDto) {
