@@ -44,9 +44,9 @@ public class Company {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Company customer = (Company) o;
-        return id != null && Objects.equals(id, customer.id);
+        if (!(o instanceof Company)) return false;
+        Company company = (Company) o;
+        return id != null && Objects.equals(id, company.id);
     }
 
     @Override
