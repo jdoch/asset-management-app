@@ -1,5 +1,7 @@
 package com.example.springcrudapp.service;
 
+import com.example.springcrudapp.exception.CompanyNotFound;
+import com.example.springcrudapp.model.Company;
 import com.example.springcrudapp.model.DTO.AddressDTO;
 import com.example.springcrudapp.model.DTO.CompanyListEntryDTO;
 import com.example.springcrudapp.model.DTO.CustomerDTO;
@@ -7,6 +9,7 @@ import com.example.springcrudapp.exception.CustomerNotFound;
 import com.example.springcrudapp.model.Address;
 import com.example.springcrudapp.model.Customer;
 import com.example.springcrudapp.model.DTO.CustomerListEntryDTO;
+import com.example.springcrudapp.repository.CompanyRepository;
 import com.example.springcrudapp.repository.CustomerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,6 +24,7 @@ import java.util.stream.StreamSupport;
 @AllArgsConstructor
 public class CustomerService {
     private final CustomerRepository customerRepository;
+    private final CompanyRepository companyRepository;
 
     public List<CustomerListEntryDTO> findAll() {
         return StreamSupport.stream(customerRepository.findAll().spliterator(), false)
@@ -33,15 +37,19 @@ public class CustomerService {
     }
 
     public Customer save(CustomerDTO customerDTO) {
-        return customerRepository.save(new Customer(customerDTO));
+        validateCustomer(customerDTO);
+        Customer customer = new Customer(customerDTO);
+        return customerRepository.save(customer);
     }
 
     @Transactional
     public Customer update(UUID id, CustomerDTO updatedCustomer) {
+        validateCustomer(updatedCustomer);
         Customer customer = customerRepository.findById(id).orElseThrow(CustomerNotFound::new);
         customer.setName(updatedCustomer.getName());
         customer.setSurname(updatedCustomer.getSurname());
         updateCustomerAddress(customer, updatedCustomer.getAddress());
+        updateCustomerCompanies(customer, updatedCustomer.getCompanies());
         return customer;
     }
 
@@ -51,6 +59,19 @@ public class CustomerService {
             throw new CustomerNotFound();
         }
         customerRepository.deleteById(id);
+    }
+
+    private void validateCustomer(CustomerDTO customerDTO) {
+        var companies = customerDTO.getCompanies();
+        if (companies == null)  {
+            return;
+        }
+        var companyIds = companies.stream()
+                .map(Company::getId)
+                .toList();
+        if (!companies.isEmpty() && !companyRepository.existsAllByIdIn(companyIds)) {
+            throw new CompanyNotFound();
+        }
     }
 
     private void updateCustomerAddress(Customer customer, AddressDTO updatedAddress) {
@@ -65,6 +86,13 @@ public class CustomerService {
             address.setPostalCode(updatedAddress.getPostalCode());
             address.setBuildingNumber(updatedAddress.getBuildingNumber());
             address.setHouseNumber(updatedAddress.getHouseNumber());
+        }
+    }
+
+    private void updateCustomerCompanies(Customer customer, List<Company> companies) {
+        customer.getCompanies().clear();
+        if (companies != null) {
+            companies.forEach(customer::addCompany);
         }
     }
 }

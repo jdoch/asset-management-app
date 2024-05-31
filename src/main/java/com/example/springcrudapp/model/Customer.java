@@ -35,5 +35,11 @@ public class Customer {
         name = customerDTO.getName();
         surname = customerDTO.getSurname();
         address = new Address(customerDTO.getAddress());
+        companies = new HashSet<>(customerDTO.getCompanies());
+    }
+
+    public void addCompany(Company company) {
+        companies.add(company);
+        company.getCustomers().add(this);
     }
 }
