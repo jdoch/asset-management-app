@@ -40,4 +40,17 @@ public class Company {
         assets.add(asset);
         asset.setCompany(this);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Company customer = (Company) o;
+        return id != null && Objects.equals(id, customer.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return 31;
+    }
 }
