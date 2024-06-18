@@ -8,9 +8,12 @@ import com.example.springcrudapp.model.DTO.AssetDTO;
 import com.example.springcrudapp.repository.AssetRepository;
 import com.example.springcrudapp.repository.CompanyRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -20,12 +23,13 @@ public class AssetService {
     private final AssetRepository assetRepository;
     private final CompanyRepository companyRepository;
 
-    public Iterable<Asset> getAll() {
-        return assetRepository.findAll();
+    public List<Asset> getAll(int pageNumber, int pageSize) {
+        return assetRepository.findAll(PageRequest.of(pageNumber, pageSize, Sort.by("name")));
     }
 
-    public Iterable<Asset> getAllByCompanyId(UUID companyId) {
-        return assetRepository.findAllByCompanyId(companyId);
+    public List<Asset> getAllByCompanyId(UUID companyId, int pageNumber, int pageSize) {
+        return assetRepository.findAllByCompanyId(companyId, PageRequest.of(pageNumber, pageSize,
+                Sort.by("name")));
     }
 
     @Transactional

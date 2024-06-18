@@ -6,6 +6,7 @@ import com.example.springcrudapp.service.AssetService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -14,13 +15,13 @@ import java.util.UUID;
 public class AssetController {
     private final AssetService assetService;
     @GetMapping("/getAll")
-    public Iterable<Asset> getAll() {
-        return assetService.getAll();
+    public List<Asset> getAll(@RequestParam int pageNumber, @RequestParam int pageSize) {
+        return assetService.getAll(pageNumber, pageSize);
     }
 
     @GetMapping("/getAllForCompany")
-    public Iterable<Asset> getAll(@RequestParam UUID companyId) {
-        return assetService.getAllByCompanyId(companyId);
+    public List<Asset> getAll(@RequestParam UUID companyId, @RequestParam int pageNumber, @RequestParam int pageSize) {
+        return assetService.getAllByCompanyId(companyId, pageNumber, pageSize);
     }
 
     @PostMapping("/addToCompany")
