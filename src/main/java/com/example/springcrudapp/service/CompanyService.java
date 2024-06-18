@@ -7,8 +7,12 @@ import com.example.springcrudapp.model.DTO.CompanyDTO;
 import com.example.springcrudapp.model.DTO.CompanyListEntryDTO;
 import com.example.springcrudapp.repository.CompanyRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.UUID;
@@ -21,8 +25,9 @@ import java.util.stream.StreamSupport;
 public class CompanyService {
     private final CompanyRepository companyRepository;
 
-    public List<CompanyListEntryDTO> findAll() {
-        return companyRepository.findByOrderByNameAsc().stream()
+    public List<CompanyListEntryDTO> findAll(int pageNumber, int pageSize) {
+        return companyRepository.findAll(PageRequest.of(pageNumber, pageSize, Sort.by("name")))
+                .stream()
                 .map(CompanyListEntryDTO::new)
                 .collect(Collectors.toList());
     }

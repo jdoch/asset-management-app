@@ -19,8 +19,8 @@ public class CompanyController {
     private final CompanyService companyService;
 
     @GetMapping("/getAll")
-    public List<CompanyListEntryDTO> getAll() {
-        return companyService.findAll();
+    public List<CompanyListEntryDTO> getAll(@RequestParam int pageNumber, @RequestParam int pageSize) {
+        return companyService.findAll(pageNumber, pageSize);
     }
 
     @PostMapping("/add")
