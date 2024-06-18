@@ -3,7 +3,6 @@ package com.example.springcrudapp.service;
 import com.example.springcrudapp.exception.CompanyNotFound;
 import com.example.springcrudapp.model.Company;
 import com.example.springcrudapp.model.DTO.AddressDTO;
-import com.example.springcrudapp.model.DTO.CompanyListEntryDTO;
 import com.example.springcrudapp.model.DTO.CustomerDTO;
 import com.example.springcrudapp.exception.CustomerNotFound;
 import com.example.springcrudapp.model.Address;
@@ -16,12 +15,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Service
 @AllArgsConstructor
