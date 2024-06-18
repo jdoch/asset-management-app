@@ -32,9 +32,11 @@ public class Address {
     }
 
     public Address(AddressDTO addressDTO) {
-        street = addressDTO.getStreet();
-        postalCode = addressDTO.getPostalCode();
-        buildingNumber = addressDTO.getBuildingNumber();;
-        houseNumber = addressDTO.getHouseNumber();;
+        if (addressDTO != null) {
+            street = addressDTO.getStreet();
+            postalCode = addressDTO.getPostalCode();
+            buildingNumber = addressDTO.getBuildingNumber();;
+            houseNumber = addressDTO.getHouseNumber();;
+        }
     }
 }
