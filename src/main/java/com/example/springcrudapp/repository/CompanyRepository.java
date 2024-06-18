@@ -8,4 +8,6 @@ import java.util.UUID;
 
 public interface CompanyRepository extends CrudRepository<Company, UUID> {
     Boolean existsAllByIdIn(List<UUID> ids);
+
+    List<Company> findByOrderByNameAsc();
 }

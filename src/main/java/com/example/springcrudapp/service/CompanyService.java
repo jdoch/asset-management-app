@@ -22,7 +22,7 @@ public class CompanyService {
     private final CompanyRepository companyRepository;
 
     public List<CompanyListEntryDTO> findAll() {
-        return StreamSupport.stream(companyRepository.findAll().spliterator(), false)
+        return companyRepository.findByOrderByNameAsc().stream()
                 .map(CompanyListEntryDTO::new)
                 .collect(Collectors.toList());
     }
