@@ -7,5 +7,5 @@ import lombok.Setter;
 @Setter
 public class AssetDTO {
     private String name;
-    private double value;
+    private double valuation;
 }

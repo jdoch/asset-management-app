@@ -16,7 +16,7 @@ public class Asset {
     @GeneratedValue
     private UUID id;
     private String name;
-    private double value;
+    private double valuation;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
@@ -27,6 +27,6 @@ public class Asset {
 
     public Asset(AssetDTO assetDTO) {
         name = assetDTO.getName();
-        value = assetDTO.getValue();
+        valuation = assetDTO.getValuation();
     }
 }
