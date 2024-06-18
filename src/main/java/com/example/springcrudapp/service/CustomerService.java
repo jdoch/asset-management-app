@@ -12,8 +12,11 @@ import com.example.springcrudapp.model.DTO.CustomerListEntryDTO;
 import com.example.springcrudapp.repository.CompanyRepository;
 import com.example.springcrudapp.repository.CustomerRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.UUID;
@@ -26,8 +29,9 @@ public class CustomerService {
     private final CustomerRepository customerRepository;
     private final CompanyRepository companyRepository;
 
-    public List<CustomerListEntryDTO> findAll() {
-        return StreamSupport.stream(customerRepository.findAll().spliterator(), false)
+    public List<CustomerListEntryDTO> findAll(int pageNumber, int pageSize) {
+        return customerRepository.findAll(PageRequest.of(pageNumber, pageSize, Sort.by("name")))
+                .stream()
                 .map(CustomerListEntryDTO::new)
                 .collect(Collectors.toList());
     }

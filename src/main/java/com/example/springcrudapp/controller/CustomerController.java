@@ -19,8 +19,8 @@ public class CustomerController {
     private final CustomerService customerService;
 
     @GetMapping("/getAll")
-    public List<CustomerListEntryDTO> getAll() {
-        return customerService.findAll();
+    public List<CustomerListEntryDTO> getAll(@RequestParam int pageNumber, @RequestParam int pageSize) {
+        return customerService.findAll(pageNumber, pageSize);
     }
 
     @GetMapping("/getDetails")
