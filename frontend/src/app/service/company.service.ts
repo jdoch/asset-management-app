@@ -8,7 +8,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class CompanyService {
 
-  private apiUrl = 'localhost:8080/company';
+  private apiUrl = 'http://localhost:8080/company';
   constructor(private http: HttpClient) { }
 
   getAllCompanies(): CompanyDto[] {

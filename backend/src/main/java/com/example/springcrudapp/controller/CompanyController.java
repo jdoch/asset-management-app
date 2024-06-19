@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/company")
 @AllArgsConstructor
 public class CompanyController {
@@ -22,6 +23,7 @@ public class CompanyController {
     public List<CompanyListEntryDTO> getAll(@RequestParam int pageNumber, @RequestParam int pageSize) {
         return companyService.findAll(pageNumber, pageSize);
     }
+
 
     @GetMapping("/count")
     public long count() {
