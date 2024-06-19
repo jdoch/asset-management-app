@@ -23,6 +23,11 @@ public class CompanyController {
         return companyService.findAll(pageNumber, pageSize);
     }
 
+    @GetMapping("/count")
+    public long count() {
+        return companyService.count();
+    }
+
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public Company add(@RequestBody CompanyDTO companyDTO) {

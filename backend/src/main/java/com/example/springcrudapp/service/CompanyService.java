@@ -32,6 +32,10 @@ public class CompanyService {
                 .collect(Collectors.toList());
     }
 
+    public long count() {
+        return companyRepository.count();
+    }
+
     public Company save(CompanyDTO companyDto) {
         return companyRepository.save(new Company(companyDto));
     }
