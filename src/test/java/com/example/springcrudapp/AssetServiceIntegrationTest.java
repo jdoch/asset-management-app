@@ -23,7 +23,7 @@ public class AssetServiceIntegrationTest {
     private AssetRepository assetRepository;
 
     @Test
-    public void testGetAllItemsIntegration() {
+    public void testGetAllAssets() {
         Asset asset = new Asset();
         asset.setName("Asset 1");
         assetRepository.save(asset);
