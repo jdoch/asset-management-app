@@ -7,9 +7,7 @@
   </div>
   <div>
     <mat-list class="mat-body-1" role="list">
-      <mat-list-item role="listitem">Item 1</mat-list-item>
-      <mat-list-item role="listitem">Item 2</mat-list-item>
-      <mat-list-item role="listitem">Item 3</mat-list-item>
+      <mat-list-item *ngFor="let company of companies">{{ company.name }}</mat-list-item>
     </mat-list>
   </div>
   <mat-divider></mat-divider>
