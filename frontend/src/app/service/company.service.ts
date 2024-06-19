@@ -11,4 +11,8 @@ export class CompanyService {
   getAllCompanies(): CompanyDto[] {
     return [{ id: '12345', name: 'Company A'}, { id: '12345', name: 'Company B'}];
   }
+
+  getAmountOfCompanies(): number {
+    return 100;
+  }
 }

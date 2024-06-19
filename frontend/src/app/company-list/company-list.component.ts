@@ -25,10 +25,12 @@ import {CompanyService} from "../service/company.service";
 })
 export class CompanyListComponent implements OnInit {
   companies: CompanyDto[] = [];
+  length = 100;
 
   constructor(private companyService: CompanyService) { }
 
   ngOnInit(): void {
     this.companies = this.companyService.getAllCompanies();
+    this.length = this.companyService.getAmountOfCompanies();
   }
 }
