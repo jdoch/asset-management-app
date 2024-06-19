@@ -1,0 +1,11 @@
+.border-div {
+  border: 1px solid #c4c6d0;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.top-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
