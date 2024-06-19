@@ -4,10 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CrudAppMavenApplication {
+public class AssetManagementApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(CrudAppMavenApplication.class, args);
+        SpringApplication.run(AssetManagementApp.class, args);
     }
-
 }
