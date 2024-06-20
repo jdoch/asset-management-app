@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {CompanyDto} from "../../model/company-dto";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CompanyService} from "../../service/company.service";
+import {AddressDto} from "../../model/address-dto";
 
 @Component({
   selector: 'app-add-company',
@@ -18,7 +19,11 @@ export class AddCompanyComponent {
     private companyService: CompanyService
   ) {
     this.form = this.formBuilder.group({
-      name: ['', Validators.required]
+      name: ['', Validators.required],
+      street: [''],
+      postalCode: [''],
+      buildingNumber: [''],
+      houseNumber: [''],
     });
   }
 
@@ -28,9 +33,15 @@ export class AddCompanyComponent {
 
   onSubmit(): void {
     if (this.form.valid) {
+      const addressDto: AddressDto = {
+        street: this.form.value.street,
+        postalCode: this.form.value.postalCode,
+        buildingNumber: this.form.value.buildingNumber,
+        houseNumber: this.form.value.houseNumber
+      }
       const company: CompanyDto = {
         name: this.form.value.name,
-        addressDto: undefined
+        addressDto: addressDto
       }
       this.companyService.createCompany(company).subscribe(response => {
         this.dialogRef.close(response);
