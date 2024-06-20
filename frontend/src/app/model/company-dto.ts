@@ -1,4 +1,6 @@
+import {AddressDto} from "./address-dto";
+
 export interface CompanyDto {
-  id: string,
-  name: string
+  name: string,
+  addressDto: AddressDto | undefined
 }
