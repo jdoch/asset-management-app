@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {CompanyDto} from "../model/company-dto";
+import {CompanyListEntryDto} from "../model/company-list-entry-dto";
 import {CompanyService} from "../service/company.service";
 import {PageEvent} from "@angular/material/paginator";
+import {MatDialog} from "@angular/material/dialog";
+import {AddCompanyComponent} from "../dialog/add-company/add-company.component";
 
 
 @Component({
@@ -10,12 +12,12 @@ import {PageEvent} from "@angular/material/paginator";
   styleUrl: './company-list.component.css'
 })
 export class CompanyListComponent implements OnInit {
-  companies: CompanyDto[] = [];
+  companies: CompanyListEntryDto[] = [];
   length = 100;
   pageIndex = 0;
   pageSize = 2;
 
-  constructor(private companyService: CompanyService) {
+  constructor(private companyService: CompanyService, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -40,5 +42,10 @@ export class CompanyListComponent implements OnInit {
         this.companies = data;
       }
     );
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AddCompanyComponent, {});
+    dialogRef.afterClosed().subscribe(result => {});
   }
 }
