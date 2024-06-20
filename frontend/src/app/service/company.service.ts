@@ -11,8 +11,8 @@ export class CompanyService {
   private apiUrl = 'http://localhost:8080/company';
   constructor(private http: HttpClient) { }
 
-  getAllCompanies(): CompanyDto[] {
-    return [{ id: '12345', name: 'Company A'}, { id: '12345', name: 'Company B'}];
+  getAllCompanies(pageIndex: number, pageSize: number): Observable<CompanyDto[]> {
+    return this.http.get<CompanyDto[]>(this.apiUrl + '/getAll?pageNumber=' + pageIndex + '&pageSize=' + pageSize);
   }
 
   getAmountOfCompanies(): Observable<number> {

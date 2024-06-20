@@ -13,8 +13,9 @@
   <mat-divider></mat-divider>
   <div>
     <mat-paginator [length]="length"
-                   [pageSize]="5"
-                   [pageSizeOptions]="[5, 10, 25, 100]"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="[2, 10, 25, 100]"
+                   (page)="pageChangeEvent($event)"
                    aria-label="Select page">
     </mat-paginator>
   </div>
