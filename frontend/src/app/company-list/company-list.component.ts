@@ -57,4 +57,11 @@ export class CompanyListComponent implements OnInit {
       }
     });
   }
+
+  deleteCompany(id: string): void {
+    this.companyService.deleteCompany(id).subscribe(() => {
+      this.getCompanies();
+      this.companyService.getAmountOfCompanies().subscribe(data => this.length = data);
+    });
+  }
 }

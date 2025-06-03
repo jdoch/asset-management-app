@@ -48,6 +48,14 @@ public class CompanyService {
         return company;
     }
 
+    @Transactional
+    public void delete(UUID id) {
+        if (!companyRepository.existsById(id)) {
+            throw new CompanyNotFound();
+        }
+        companyRepository.deleteById(id);
+    }
+
     private void updateCompanyAddress(Company company, AddressDTO updatedAddress) {
         Address address = company.getAddress();
         if (address == null) {
