@@ -23,4 +23,8 @@ export class CompanyService {
   createCompany(company: CompanyDto): Observable<CompanyDto> {
     return this.http.post<CompanyDto>(this.apiUrl + '/add', company);
   }
+
+  deleteCompany(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/delete?id=${id}`);
+  }
 }

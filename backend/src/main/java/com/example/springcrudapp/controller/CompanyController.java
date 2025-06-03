@@ -41,4 +41,9 @@ public class CompanyController {
                           @RequestBody CompanyDTO companyDTO) {
         return companyService.update(id, companyDTO);
     }
+
+    @DeleteMapping("/delete")
+    public void delete(@RequestParam UUID id) {
+        companyService.delete(id);
+    }
 }
