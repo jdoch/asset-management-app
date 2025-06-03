@@ -46,6 +46,15 @@ export class CompanyListComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddCompanyComponent, {});
-    dialogRef.afterClosed().subscribe(result => {});
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getCompanies();
+        this.companyService.getAmountOfCompanies().subscribe(
+          (data) => {
+            this.length = data;
+          }
+        );
+      }
+    });
   }
 }
