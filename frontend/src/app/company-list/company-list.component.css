@@ -16,3 +16,8 @@
   align-items: center;
   width: 100%;
 }
+
+.delete-btn {
+  border: none;
+  box-shadow: none;
+}
