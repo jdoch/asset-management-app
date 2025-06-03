@@ -20,4 +20,10 @@
 .delete-btn {
   border: none;
   box-shadow: none;
+  background-color: #f44336;
+  color: white;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 50%;
 }
