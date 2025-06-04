@@ -33,16 +33,16 @@ export class AddCompanyComponent {
 
   onSubmit(): void {
     if (this.form.valid) {
-      const addressDto: AddressDto = {
+      const address: AddressDto = {
         street: this.form.value.street,
         postalCode: this.form.value.postalCode,
         buildingNumber: this.form.value.buildingNumber,
         houseNumber: this.form.value.houseNumber
-      }
+      };
       const company: CompanyDto = {
         name: this.form.value.name,
-        addressDto: addressDto
-      }
+        address: address
+      };
       this.companyService.createCompany(company).subscribe(response => {
         this.dialogRef.close(response);
       }, error => {
