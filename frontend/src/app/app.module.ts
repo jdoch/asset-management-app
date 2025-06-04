@@ -11,6 +11,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import {provideHttpClient} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AddCompanyComponent} from "./dialog/add-company/add-company.component";
+import {ConfirmDeleteComponent} from "./dialog/confirm-delete/confirm-delete.component";
 import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -21,7 +22,8 @@ import {MatInput} from "@angular/material/input";
   declarations: [
     AppComponent,
     CompanyListComponent,
-    AddCompanyComponent
+    AddCompanyComponent,
+    ConfirmDeleteComponent,
   ],
   imports: [
     CommonModule,
