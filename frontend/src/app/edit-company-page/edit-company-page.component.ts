@@ -2,6 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CompanyService} from '../service/company.service';
+import {AssetService} from '../service/asset.service';
+import {MatDialog} from "@angular/material/dialog";
+import {Asset} from "../model/asset";
+import {AddAssetComponent} from "../dialog/add-asset/add-asset.component";
 import {AddressDto} from '../model/address-dto';
 import {CompanyDto} from '../model/company-dto';
 import {CompanyDetailsDto} from '../model/company-details-dto';
@@ -14,12 +18,15 @@ import {CompanyDetailsDto} from '../model/company-details-dto';
 export class EditCompanyPageComponent implements OnInit {
   form: FormGroup;
   id: string = '';
+  assets: Asset[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
     private companyService: CompanyService,
+    private assetService: AssetService,
+    private dialog: MatDialog,
   ) {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
@@ -43,6 +50,20 @@ export class EditCompanyPageComponent implements OnInit {
             houseNumber: company.address?.houseNumber ?? ''
           });
         });
+        this.loadAssets();
+      }
+    });
+  }
+
+  loadAssets(): void {
+    this.assetService.getAssetsForCompany(this.id).subscribe(data => this.assets = data);
+  }
+
+  openAddAssetDialog(): void {
+    const dialogRef = this.dialog.open(AddAssetComponent, {data: {companyId: this.id}});
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.loadAssets();
       }
     });
   }

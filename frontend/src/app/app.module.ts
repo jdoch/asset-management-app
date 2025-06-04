@@ -13,6 +13,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AddCompanyComponent} from "./dialog/add-company/add-company.component";
 import {EditCompanyComponent} from "./dialog/edit-company/edit-company.component";
 import {ConfirmDeleteComponent} from "./dialog/confirm-delete/confirm-delete.component";
+import {AddAssetComponent} from "./dialog/add-asset/add-asset.component";
 import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -30,6 +31,7 @@ import {EditCompanyPageComponent} from "./edit-company-page/edit-company-page.co
     EditCompanyComponent,
     EditCompanyPageComponent,
     ConfirmDeleteComponent,
+    AddAssetComponent,
   ],
   imports: [
     CommonModule,
