@@ -5,9 +5,6 @@ import {PageEvent} from "@angular/material/paginator";
 import {MatDialog} from "@angular/material/dialog";
 import {AddCompanyComponent} from "../dialog/add-company/add-company.component";
 
-import {EditCompanyComponent} from "../dialog/edit-company/edit-company.component";
-
-
 import {ConfirmDeleteComponent} from "../dialog/confirm-delete/confirm-delete.component";
 @Component({
   selector: 'app-company-list',
@@ -61,14 +58,6 @@ export class CompanyListComponent implements OnInit {
     });
   }
 
-  openEditDialog(id: string): void {
-    const dialogRef = this.dialog.open(EditCompanyComponent, {data: {id}});
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.getCompanies();
-      }
-    });
-  }
   openDeleteDialog(id: string): void {
     const dialogRef = this.dialog.open(ConfirmDeleteComponent);
     dialogRef.afterClosed().subscribe(result => {
