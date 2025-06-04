@@ -8,10 +8,12 @@
   <div>
     <mat-list class="mat-body-1" role="list">
       <mat-list-item *ngFor="let company of companies">
-        {{ company.name }}
-        <button mat-icon-button (click)="deleteCompany(company.id)" aria-label="Delete company">
-          <mat-icon>delete</mat-icon>
-        </button>
+        <div class="company-item">
+          <span>{{ company.name }}</span>
+          <button mat-mini-fab color="warn" class="delete-btn" (click)="deleteCompany(company.id)" aria-label="Delete company">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
       </mat-list-item>
     </mat-list>
   </div>
