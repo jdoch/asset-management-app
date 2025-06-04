@@ -7,7 +7,7 @@
   </div>
   <div>
     <mat-list class="mat-body-1" role="list">
-      <mat-list-item *ngFor="let company of companies" (click)="openEditDialog(company.id)">
+      <mat-list-item *ngFor="let company of companies" [routerLink]="['/company', company.id]">
         <div class="company-item">
           <span class="company-name">{{ company.name }}</span>
           <button mat-mini-fab color="warn" class="delete-btn" (click)="openDeleteDialog(company.id); $event.stopPropagation()" aria-label="Delete company">

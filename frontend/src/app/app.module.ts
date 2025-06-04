@@ -17,6 +17,9 @@ import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInput} from "@angular/material/input";
+import {RouterModule, RouterOutlet} from "@angular/router";
+import {routes} from "./app.routes";
+import {EditCompanyPageComponent} from "./edit-company-page/edit-company-page.component";
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -25,6 +28,7 @@ import {MatInput} from "@angular/material/input";
     CompanyListComponent,
     AddCompanyComponent,
     EditCompanyComponent,
+    EditCompanyPageComponent,
     ConfirmDeleteComponent,
   ],
   imports: [
@@ -47,7 +51,9 @@ import {MatInput} from "@angular/material/input";
     MatInput,
     MatDialogTitle,
     ReactiveFormsModule,
-    MatLabel
+    MatLabel,
+    RouterOutlet,
+    RouterModule.forRoot(routes)
   ],
   providers: [provideHttpClient()],
   schemas: [NO_ERRORS_SCHEMA]
