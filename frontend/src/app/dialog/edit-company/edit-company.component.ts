@@ -47,7 +47,7 @@ export class EditCompanyComponent implements OnInit {
 
   onSubmit(): void {
     if (this.form.valid) {
-      const addressDto: AddressDto = {
+      const address: AddressDto = {
         street: this.form.value.street,
         postalCode: this.form.value.postalCode,
         buildingNumber: this.form.value.buildingNumber,
@@ -55,7 +55,7 @@ export class EditCompanyComponent implements OnInit {
       };
       const company: CompanyDto = {
         name: this.form.value.name,
-        addressDto: addressDto
+        address: address
       };
       this.companyService.updateCompany(this.data.id, company).subscribe(response => {
         this.dialogRef.close(response);
