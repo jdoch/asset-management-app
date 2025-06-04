@@ -68,11 +68,15 @@ public class CompanyService {
         }
 
         if (updatedAddress != null) {
-            address.setStreet(updatedAddress.getStreet());
-            address.setPostalCode(updatedAddress.getPostalCode());
-            address.setBuildingNumber(updatedAddress.getBuildingNumber());
-            address.setHouseNumber(updatedAddress.getHouseNumber());
+            address.setStreet(blankToNull(updatedAddress.getStreet()));
+            address.setPostalCode(blankToNull(updatedAddress.getPostalCode()));
+            address.setBuildingNumber(blankToNull(updatedAddress.getBuildingNumber()));
+            address.setHouseNumber(blankToNull(updatedAddress.getHouseNumber()));
         }
+    }
+
+    private String blankToNull(String value) {
+        return (value == null || value.isBlank()) ? null : value;
     }
 
 }

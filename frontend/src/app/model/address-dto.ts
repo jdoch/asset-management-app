@@ -1,6 +1,6 @@
 export interface AddressDto {
-  street: string,
-  postalCode: string,
-  buildingNumber: string,
-  houseNumber: string
+  street: string | null,
+  postalCode: string | null,
+  buildingNumber: string | null,
+  houseNumber: string | null
 }
