@@ -33,10 +33,14 @@ public class Address {
 
     public Address(AddressDTO addressDTO) {
         if (addressDTO != null) {
-            street = addressDTO.getStreet();
-            postalCode = addressDTO.getPostalCode();
-            buildingNumber = addressDTO.getBuildingNumber();;
-            houseNumber = addressDTO.getHouseNumber();;
+            street = blankToNull(addressDTO.getStreet());
+            postalCode = blankToNull(addressDTO.getPostalCode());
+            buildingNumber = blankToNull(addressDTO.getBuildingNumber());
+            houseNumber = blankToNull(addressDTO.getHouseNumber());
         }
+    }
+
+    private String blankToNull(String value) {
+        return (value == null || value.isBlank()) ? null : value;
     }
 }
