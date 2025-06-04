@@ -30,6 +30,11 @@ public class CompanyController {
         return companyService.count();
     }
 
+    @GetMapping("/getDetails")
+    public Company getDetails(@RequestParam UUID id) {
+        return companyService.findById(id);
+    }
+
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public Company add(@RequestBody CompanyDTO companyDTO) {

@@ -3,6 +3,7 @@ import {CompanyListEntryDto} from "../model/company-list-entry-dto";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {CompanyDto} from "../model/company-dto";
+import {CompanyDetailsDto} from "../model/company-details-dto";
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,14 @@ export class CompanyService {
 
   createCompany(company: CompanyDto): Observable<CompanyDto> {
     return this.http.post<CompanyDto>(this.apiUrl + '/add', company);
+  }
+
+  getCompanyDetails(id: string): Observable<CompanyDetailsDto> {
+    return this.http.get<CompanyDetailsDto>(`${this.apiUrl}/getDetails?id=${id}`);
+  }
+
+  updateCompany(id: string, company: CompanyDto): Observable<CompanyDto> {
+    return this.http.put<CompanyDto>(`${this.apiUrl}/update?id=${id}`, company);
   }
 
   deleteCompany(id: string): Observable<void> {
