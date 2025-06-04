@@ -34,3 +34,7 @@
 .delete-btn:hover {
   background-color: #d32f2f; /* slightly darker red */
 }
+
+.company-name:hover {
+  cursor: pointer;
+}

@@ -9,7 +9,7 @@
     <mat-list class="mat-body-1" role="list">
       <mat-list-item *ngFor="let company of companies" (click)="openEditDialog(company.id)">
         <div class="company-item">
-          <span>{{ company.name }}</span>
+          <span class="company-name">{{ company.name }}</span>
           <button mat-mini-fab color="warn" class="delete-btn" (click)="openDeleteDialog(company.id); $event.stopPropagation()" aria-label="Delete company">
             <mat-icon>delete</mat-icon>
           </button>
