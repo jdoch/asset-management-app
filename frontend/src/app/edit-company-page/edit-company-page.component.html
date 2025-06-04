@@ -1,9 +1,10 @@
-<h1>Edit company</h1>
-<form [formGroup]="form" class="form-group">
-  <mat-form-field>
-    <mat-label>Name</mat-label>
-    <input matInput formControlName="name">
-  </mat-form-field>
+<div class="edit-company-container">
+  <h1>Edit company</h1>
+  <form [formGroup]="form" class="form-group">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
   <mat-form-field>
     <mat-label>Street</mat-label>
     <input matInput formControlName="street">
@@ -20,8 +21,9 @@
     <mat-label>House number</mat-label>
     <input matInput formControlName="houseNumber">
   </mat-form-field>
-</form>
-<div class="actions">
-  <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-button (click)="onSubmit()">Save</button>
+  </form>
+  <div class="actions">
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-button (click)="onSubmit()">Save</button>
+  </div>
 </div>

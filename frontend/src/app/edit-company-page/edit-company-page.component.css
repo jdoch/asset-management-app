@@ -4,6 +4,13 @@
   align-items: flex-start;
 }
 
+.edit-company-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .actions {
   margin-top: 1rem;
 }
