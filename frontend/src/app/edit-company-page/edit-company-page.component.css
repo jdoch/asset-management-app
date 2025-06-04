@@ -14,3 +14,15 @@
 .actions {
   margin-top: 1rem;
 }
+
+.asset-section {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.asset-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
