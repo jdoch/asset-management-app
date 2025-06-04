@@ -36,6 +36,10 @@ public class CompanyService {
         return companyRepository.count();
     }
 
+    public Company findById(UUID id) {
+        return companyRepository.findById(id).orElseThrow(CompanyNotFound::new);
+    }
+
     public Company save(CompanyDTO companyDto) {
         return companyRepository.save(new Company(companyDto));
     }

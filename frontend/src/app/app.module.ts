@@ -11,6 +11,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import {provideHttpClient} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AddCompanyComponent} from "./dialog/add-company/add-company.component";
+import {EditCompanyComponent} from "./dialog/edit-company/edit-company.component";
 import {ConfirmDeleteComponent} from "./dialog/confirm-delete/confirm-delete.component";
 import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
@@ -23,6 +24,7 @@ import {MatInput} from "@angular/material/input";
     AppComponent,
     CompanyListComponent,
     AddCompanyComponent,
+    EditCompanyComponent,
     ConfirmDeleteComponent,
   ],
   imports: [
